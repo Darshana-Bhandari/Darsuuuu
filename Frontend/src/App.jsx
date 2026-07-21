@@ -1,12 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { DoctorProvider } from './contexts/DoctorContext';
 import AppRouter from './Routes/AppRouter'
 
-const App = () => {
+function App() {
   return (
-    <>
-      <AppRouter />
-    </>
-  )
+    <ThemeProvider>
+      <DoctorProvider>
+        <AppRouter />
+      </DoctorProvider>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
