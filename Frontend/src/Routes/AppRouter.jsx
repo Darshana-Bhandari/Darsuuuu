@@ -1,4 +1,4 @@
-import React from 'react';
+import { Suspense } from 'react';
 import { 
   createBrowserRouter, 
   RouterProvider, 
@@ -12,25 +12,25 @@ import AuthLayout from '../components/common/AuthLayout';
 // Pages
 import Home from '../pages/Home';
 import Doctor from '../pages/Doctor';
-import DoctorDetail from '../pages/DoctorDetail';
+import DoctorDetail from '../pages/DoctorDetails';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import NotFound from '../pages/Error';
-import Services from '../pages/Services';
-import ServiceDetail from '../pages/ServiceDetail';
+import Services from '../pages/Service';
+import ServiceDetail from '../pages/ServiceDetails';
 
 // Components
 import  LoadingSpinner  from '../components/ui/LoadingSpinner';
 
 // Lazy loading wrapper
 const RouteWrapper = ({ children }) => (
-  <React.Suspense fallback={
+  <Suspense fallback={
     <div className="flex-center min-h-[60vh]">
       <LoadingSpinner size="lg" />
     </div>
   }>
     {children}
-  </React.Suspense>
+  </Suspense>
 );
 
 // Auth guard

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/doctors/HeroSection.jsx';
 import Card from '../components/ui/Card';
@@ -51,7 +50,7 @@ const Home = () => {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <Card key={feature.title} className="text-left" hoverable>
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-50 text-2xl">
                 {feature.icon}

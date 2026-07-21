@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import HeroSection from '../components/doctors/HeroSection';
 import SearchBar from '../components/doctors/SearchBar';
 import FilterSection from '../components/doctors/FilterSection';
-import DoctorsList from '../components/doctors/DoctorList';
+import DoctorsList from '../components/doctors/DoctorCardList';
 import Card from '../components/ui/Card';
 
 const Doctor = () => {

@@ -1,42 +1,28 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import DoctorCard from './DoctorCard';
-import LoadingSpinner from '../ui/LoadingSpinner';
 import { doctorsData } from '../../utils/dummyData';
 
 const DoctorsList = ({ searchQuery, filters }) => {
-  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchQuery, filters]);
-
   const filteredDoctors = useMemo(() => {
     return doctorsData.filter(doctor => {
-      // Search filter
-      const searchMatch = searchQuery.trim() === '' || 
-        doctor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        doctor.specialty.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        doctor.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        doctor.hospital.toLowerCase().includes(searchQuery.toLowerCase());
+      const query = searchQuery.trim().toLowerCase();
+      const searchMatch = query === '' ||
+        doctor.name.toLowerCase().includes(query) ||
+        doctor.specialty.toLowerCase().includes(query) ||
+        doctor.location.toLowerCase().includes(query) ||
+        doctor.hospital.toLowerCase().includes(query);
 
-      // Specialty filter
-      const specialtyMatch = filters.specialty === '' || 
-        doctor.specialty === filters.specialty;
+      const specialtyMatch = filters.specialty === '' || doctor.specialty === filters.specialty;
+      const availabilityMatch = filters.availability === '' || doctor.availability === filters.availability;
 
-      // Availability filter
-      const availabilityMatch = filters.availability === '' || 
-        doctor.availability === filters.availability;
-
-      // Rating filter
       let ratingMatch = true;
       if (filters.rating !== '') {
-        const minRating = parseFloat(filters.rating);
-        ratingMatch = doctor.rating >= minRating;
+        ratingMatch = doctor.rating >= parseFloat(filters.rating);
       }
 
-      // Experience filter
       let experienceMatch = true;
       if (filters.experience !== '') {
         const expRange = filters.experience;
@@ -50,18 +36,14 @@ const DoctorsList = ({ searchQuery, filters }) => {
     });
   }, [searchQuery, filters]);
 
-  const totalPages = Math.ceil(filteredDoctors.length / itemsPerPage);
+  const totalPages = Math.max(1, Math.ceil(filteredDoctors.length / itemsPerPage));
   const paginatedDoctors = filteredDoctors.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  if (loading) {
-    return (
-      <div className="card p-12">
-        <LoadingSpinner size="lg" text="Loading doctors..." />
-      </div>
-    );
+  if (currentPage > totalPages) {
+    setCurrentPage(totalPages);
   }
 
   if (filteredDoctors.length === 0) {

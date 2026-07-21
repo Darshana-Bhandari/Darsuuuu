@@ -6,7 +6,7 @@
 /* ============================================
    CSS VARIABLES / DESIGN TOKENS
    ============================================ */
-@theme {
+:root {
   /* Primary Colors */
   --color-primary-50: #eff6ff;
   --color-surface: #f8fbff;
@@ -239,6 +239,7 @@ a:hover { color: var(--color-primary-700); }
 
 .text-clamp-2 {
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -246,6 +247,7 @@ a:hover { color: var(--color-primary-700); }
 
 .text-clamp-3 {
   display: -webkit-box;
+  line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;

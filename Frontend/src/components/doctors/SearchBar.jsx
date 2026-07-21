@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from 'react';
 import Input from '../ui/Input';
 
 const SearchBar = ({ searchQuery, setSearchQuery, onSearch }) => {
-  const [localQuery, setLocalQuery] = useState(searchQuery);
-
-  useEffect(() => {
-    setLocalQuery(searchQuery);
-  }, [searchQuery]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchQuery(localQuery);
-    if (onSearch) onSearch(localQuery);
+    if (onSearch) onSearch(searchQuery);
   };
 
   const handleClear = () => {
-    setLocalQuery('');
     setSearchQuery('');
     if (onSearch) onSearch('');
   };
@@ -26,12 +17,12 @@ const SearchBar = ({ searchQuery, setSearchQuery, onSearch }) => {
         <Input
           type="text"
           placeholder="Search by name, specialty, or location..."
-          value={localQuery}
-          onChange={(e) => setLocalQuery(e.target.value)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           icon="🔍"
           className="pr-12"
         />
-        {localQuery && (
+        {searchQuery && (
           <button
             type="button"
             onClick={handleClear}

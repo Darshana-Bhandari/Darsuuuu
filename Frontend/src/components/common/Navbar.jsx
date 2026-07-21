@@ -58,7 +58,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <a
-              to="#"
+              href="#"
               className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
               aria-label="Facebook"
             >
@@ -76,7 +76,7 @@ export default function Navbar() {
             </a>
 
             <a
-              to="#"
+              href="#"
               className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
               aria-label="LinkedIn"
             >
@@ -94,7 +94,7 @@ export default function Navbar() {
             </a>
 
             <a
-              to="#"
+              href="#"
               className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
               aria-label="Twitter"
             >
@@ -183,7 +183,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  to=""
+                  to="/doctors"
                   className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
                 >
                   Doctor
@@ -218,7 +218,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <Link
-              to="/appointmnet"
+              to="/doctors"
               className="py-2 px-3.5 text-sm rounded-md font-semibold cursor-pointer text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             >
               appointment

@@ -1,7 +1,8 @@
-import React from 'react'
-import { Calendar, Search, ChevronRight, Activity, Clock, ShieldCheck, Heart, Baby, Sparkles, Shield } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'
+import { Calendar, Search } from 'lucide-react';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <>
       {/* 1. Hero Section */}
@@ -28,7 +29,7 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-4">
               <button
-                onClick={() => onNavigate('book-appointment')}
+                onClick={() => navigate('/doctors')}
                 className="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer min-h-[48px] flex items-center justify-center gap-2 text-base focus:outline-none focus:ring-4 focus:ring-amber-300"
                 id="hero-cta-book"
               >
@@ -37,7 +38,7 @@ const HeroSection = () => {
               </button>
 
               <button
-                onClick={() => onNavigate('doctors')}
+                onClick={() => navigate('/doctors')}
                 className="bg-white/10 hover:bg-white/15 text-white border border-white/20 font-semibold px-8 py-4 rounded-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer min-h-[48px] flex items-center justify-center gap-2 text-base focus:outline-none focus:ring-4 focus:ring-white/20"
                 id="hero-cta-find"
               >

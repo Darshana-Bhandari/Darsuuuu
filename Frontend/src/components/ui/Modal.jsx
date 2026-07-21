@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import Button from '../Button';
+import { useEffect, useRef } from 'react';
 
 const Modal = ({
   isOpen,

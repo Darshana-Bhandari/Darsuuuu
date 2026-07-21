@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useMemo } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useMemo, useCallback } from 'react';
 import { doctorsData } from '../utils/dummyData';
 
 const DoctorContext = createContext();
@@ -16,9 +17,9 @@ export const DoctorProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const getDoctorById = (id) => {
+  const getDoctorById = useCallback((id) => {
     return doctors.find(doctor => doctor.id === id);
-  };
+  }, [doctors]);
 
   const value = useMemo(() => ({
     doctors,
@@ -28,7 +29,7 @@ export const DoctorProvider = ({ children }) => {
     setDoctors,
     setLoading,
     setError
-  }), [doctors, loading, error]);
+  }), [doctors, loading, error, getDoctorById]);
 
   return (
     <DoctorContext.Provider value={value}>

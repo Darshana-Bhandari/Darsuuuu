@@ -1,4 +1,3 @@
-import React from 'react';
 
 /**
  * Badge Component - A versatile UI component for labels, statuses, and tags
